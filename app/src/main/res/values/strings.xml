@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">TwitterFeedMVVM</string>
+    <string name="follow">Following</string>
+    <string name="username">Username</string>
+    <string name="handle">handle</string>
+    <string name="message">Message</string>
+    <string name="likesLabel">LIKES</string>
+    <string name="retweetsLabel">RETWEETS</string>
+    <string name="retweets">retweets</string>
+    <string name="likes">likes</string>
+    <string name="Date">Date</string>
 </resources>
