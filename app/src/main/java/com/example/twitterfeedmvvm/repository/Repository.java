@@ -36,6 +36,8 @@ public class Repository {
     public List<Tweet> getTweets(){
         List<Tweet> newsFeed = new ArrayList<>();
 
+
+
         newsFeed.add(new Tweet(user1,"America is great. Lets all move there. Can i have money now.",1,263,getRandomDate()));
         newsFeed.add(new Tweet(user3,"You weren't supposed to say I was gonna pay you.",1,352,getRandomDate()));
         newsFeed.add(new Tweet(user1,"I didnt say that idiot.",1,332,getRandomDate()));

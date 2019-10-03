@@ -16,7 +16,9 @@ import com.example.twitterfeedmvvm.R;
 import com.example.twitterfeedmvvm.Utils.Constants;
 import com.example.twitterfeedmvvm.model.Tweet;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Locale;
 
 public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.TweetViewHolder> {
 
@@ -68,6 +70,21 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.TweetViewHol
         holder.tvHandle.setText(currentTweet.getSender().getHandle());
         holder.tvMessage.setText(currentTweet.getMessage());
 
+        //Secondary Text View set up
+
+        String retweets = String.valueOf(currentTweet.getRetweets());
+        String likes = String.valueOf(currentTweet.getLikes());
+
+        holder.tvRetweets.setText(retweets);
+        holder.tvLikes.setText(likes);
+
+
+        //Date Set up
+        SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyy 'at' hh:MM a", Locale.US);
+        String dateString = format.format(currentTweet.getTweetTime());
+        holder.tvDate.setText(dateString);
+
+
 
 
 
@@ -79,13 +96,14 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.TweetViewHol
     }
 
 
-    public class TweetViewHolder extends RecyclerView.ViewHolder {
+     class TweetViewHolder extends RecyclerView.ViewHolder {
 
-        public ImageView ivUserImage;
-        public TextView tvUsername, tvHandle, tvMessage;
-        public Button btnFollowing;
+        ImageView ivUserImage;
+        TextView tvUsername, tvHandle, tvMessage;
+        Button btnFollowing;
+        TextView tvRetweets,tvLikes,tvDate;
 
-        public TweetViewHolder(@NonNull View itemView) {
+        TweetViewHolder(@NonNull View itemView) {
             super(itemView);
 
             ivUserImage = itemView.findViewById(R.id.iv_user_image);
@@ -93,6 +111,9 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.TweetViewHol
             tvHandle = itemView.findViewById(R.id.tv_user_handle);
             tvMessage = itemView.findViewById(R.id.tv_message);
             btnFollowing = itemView.findViewById(R.id.btn_follow);
+            tvRetweets = itemView.findViewById(R.id.tv_retweet);
+            tvLikes = itemView.findViewById(R.id.tv_likes);
+            tvDate = itemView.findViewById(R.id.tv_date);
 
 
         }

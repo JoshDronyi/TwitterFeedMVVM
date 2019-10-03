@@ -2,9 +2,10 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="300dp">
+    android:layout_height="300dp"
+    android:padding="5dp">
 
-<!--    First Row Start-->
+    <!--    First Row Start-->
 
     <ImageView
         android:id="@+id/iv_user_image"
@@ -20,6 +21,10 @@
         android:id="@+id/tv_username"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:text="@string/username"
+        android:textSize="23sp"
+        android:textStyle="bold"
+        android:gravity="center_vertical"
         app:layout_constraintBottom_toTopOf="@id/tv_user_handle"
         app:layout_constraintEnd_toStartOf="@id/gl_button_start"
         app:layout_constraintStart_toEndOf="@id/gl_user_image"
@@ -29,6 +34,9 @@
         android:id="@+id/tv_user_handle"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:text="@string/handle"
+        android:textSize="20sp"
+        android:gravity="center_vertical"
         app:layout_constraintBottom_toTopOf="@id/gl_user_bottom"
         app:layout_constraintEnd_toStartOf="@id/gl_button_start"
         app:layout_constraintStart_toEndOf="@id/gl_user_image"
@@ -49,25 +57,92 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.4" />
 
-<!--    Forst Row End-->
+    <!--    Forst Row End-->
 
-<!--    Second Row Start-->
+    <!--    Second Row Start-->
 
     <TextView
         android:id="@+id/tv_message"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:text="@string/message"
+        android:textSize="25sp"
+        android:gravity="center_vertical"
+        app:layout_constraintBottom_toTopOf="@id/gl_message_bottom"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/gl_user_bottom" />
+
+    <!--    Second Row End-->
+
+    <!--    Third Row Start-->
+    <TextView
+        android:id="@+id/tv_retweetsLabel"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="@string/retweetsLabel"
+        android:gravity="center"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/gl_message_bottom"
+        app:layout_constraintEnd_toStartOf="@id/tv_likesLabel"
+        app:layout_constraintBottom_toTopOf="@id/tv_retweet"/>
+
+    <TextView
+        android:id="@+id/tv_likesLabel"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="@string/likesLabel"
+        android:gravity="center"
+        android:textSize="12sp"
+        app:layout_constraintStart_toEndOf="@id/tv_retweetsLabel"
+        app:layout_constraintTop_toBottomOf="@id/gl_message_bottom"
+        app:layout_constraintEnd_toEndOf="@id/gl_retweets_likes_end"
+        app:layout_constraintBottom_toTopOf="@id/tv_likes"/>
+    <TextView
+        android:id="@+id/tv_retweet"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="@string/retweets"
+        android:textColor="@color/twitterBlue"
+        android:textSize="25sp"
+        android:gravity="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_retweetsLabel"
+        app:layout_constraintEnd_toStartOf="@id/tv_likes"
+        app:layout_constraintBottom_toBottomOf="@id/gl_retweets_likes_bottom"/>
+
+    <TextView
+        android:id="@+id/tv_likes"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="@string/likes"
+        android:textColor="@color/twitterBlue"
+        android:textSize="25sp"
+        android:gravity="center"
+        app:layout_constraintStart_toEndOf="@id/tv_retweetsLabel"
+        app:layout_constraintTop_toBottomOf="@id/tv_likesLabel"
+        app:layout_constraintEnd_toEndOf="@id/gl_retweets_likes_end"
+        app:layout_constraintBottom_toBottomOf="@id/gl_retweets_likes_bottom"/>
+    <!--    Third Row End-->
+
+<!--    Fourth Row Start-->
+    <TextView
+        android:id="@+id/tv_date"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="@string/Date"
+        android:textSize="20sp"
+        android:gravity="center"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/gl_user_bottom"
-        app:layout_constraintBottom_toTopOf="@id/gl_message_bottom"/>
+        app:layout_constraintTop_toBottomOf="@id/gl_retweets_likes_bottom"
+        app:layout_constraintBottom_toTopOf="@id/gl_date_bottom"/>
+<!--    Fourth Row End-->
 
+<!--    Fifth Row Start-->
 
-
-<!--    Second Row End-->
-
-
-
+<!--    Fifth Row End-->
 
 
 
@@ -96,11 +171,11 @@
         app:layout_constraintGuide_begin="109dp" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/gl_retweets_likes"
+        android:id="@+id/gl_retweets_likes_bottom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="210dp" />
+        app:layout_constraintGuide_begin="224dp" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/gl_date_bottom"
@@ -122,4 +197,11 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_end="96dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_retweets_likes_end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="187dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
