@@ -1,7 +1,6 @@
 package com.example.twitterfeedmvvm.view.adapters;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.twitterfeedmvvm.R;
 import com.example.twitterfeedmvvm.Utils.Constants;
 import com.example.twitterfeedmvvm.model.Tweet;
@@ -47,23 +47,13 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.TweetViewHol
 
         //Set Up user Image
 
-        Drawable imageAsDrawable;
 
-        switch (currentTweet.getSender().getImage()){
-            case Constants.USER1_IMAGE:
-                imageAsDrawable= context.getDrawable(R.drawable.realperson);
-                break;
-            case Constants.USER2_IMAGE:
-                imageAsDrawable= context.getDrawable(R.drawable.anotherperson);
-                break;
-            case Constants.USER3_IMAGE:
-                imageAsDrawable= context.getDrawable(R.drawable.troll);
-                break;
-                default:
-                    imageAsDrawable = context.getDrawable(R.drawable.ic_launcher_background);
-        }
+        Glide.with(context)
+                .load(currentTweet.getSender().getImage())
+                .fitCenter()
+                .into(holder.ivUserImage);
 
-        holder.ivUserImage.setImageDrawable(imageAsDrawable);
+
 
         //Set up Text views
         holder.tvUsername.setText(currentTweet.getSender().getUsername());
@@ -85,9 +75,6 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.TweetViewHol
         holder.tvDate.setText(dateString);
 
 
-
-
-
     }
 
     @Override
@@ -96,12 +83,12 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.TweetViewHol
     }
 
 
-     class TweetViewHolder extends RecyclerView.ViewHolder {
+    class TweetViewHolder extends RecyclerView.ViewHolder {
 
         ImageView ivUserImage;
         TextView tvUsername, tvHandle, tvMessage;
         Button btnFollowing;
-        TextView tvRetweets,tvLikes,tvDate;
+        TextView tvRetweets, tvLikes, tvDate;
 
         TweetViewHolder(@NonNull View itemView) {
             super(itemView);

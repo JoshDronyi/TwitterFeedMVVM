@@ -1,63 +1,67 @@
 package com.example.twitterfeedmvvm.repository;
 
+import com.example.twitterfeedmvvm.Retrofit.JokeInterface;
+import com.example.twitterfeedmvvm.Retrofit.PictureInterface;
+import com.example.twitterfeedmvvm.Retrofit.RetrofitInstance;
 import com.example.twitterfeedmvvm.Utils.Constants;
-import com.example.twitterfeedmvvm.model.Tweet;
 import com.example.twitterfeedmvvm.model.User;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import java.util.Locale;
 import java.util.Random;
 
-public class Repository {
+import retrofit2.Call;
 
-    User user1,user2, user3;
+public class Repository implements PictureInterface, JokeInterface {
 
-    private Repository(){
-
-        user1 = new User("totallyREALperson", Constants.USER1_IMAGE,"@gimmeMoneyplz");
-        user3 = new User("Any1ButMeNow",Constants.USER2_IMAGE,"@iworkforrussia");
-        user2 = new User("ThisIsAName",Constants.USER3_IMAGE,"@trollofalltrolls");
+    //region Making Repository a singleton
+    private Repository() {
 
     }
 
-    static  class RepositoryHolder{
+    static class RepositoryHolder {
         static final Repository INSTANCE = new Repository();
     }
 
-    public static Repository getInstance(){
+    public static Repository getInstance() {
         return RepositoryHolder.INSTANCE;
     }
+    //endregion
 
 
-    public List<Tweet> getTweets(){
-        List<Tweet> newsFeed = new ArrayList<>();
-
-
-
-        newsFeed.add(new Tweet(user1,"America is great. Lets all move there. Can i have money now.",1,263,getRandomDate()));
-        newsFeed.add(new Tweet(user3,"You weren't supposed to say I was gonna pay you.",1,352,getRandomDate()));
-        newsFeed.add(new Tweet(user1,"I didnt say that idiot.",1,332,getRandomDate()));
-        newsFeed.add(new Tweet(user2,"I'm just here for the entertainment. Please continue.",1,3168,getRandomDate()));
-        newsFeed.add(new Tweet(user3,"This is a presidential matter. I mean private matter.",1,943,getRandomDate()));
-        newsFeed.add(new Tweet(user2,"Yea this is getting great. ",1,3151,getRandomDate()));
-        newsFeed.add(new Tweet(user1,"This is what our country is all about.",1,553,getRandomDate()));
-        newsFeed.add(new Tweet(user2,"Shut up Karen.",1,251,getRandomDate()));
-        newsFeed.add(new Tweet(user1,"No FAAAIIIR!!",1,561,getRandomDate()));
-        newsFeed.add(new Tweet(user3,"Seriously, shut up Karen.",1,752,getRandomDate()));
-
-        return newsFeed;
+    //region Methods to override interfaces
+    @Override
+    public Call<String> getImage(int width, int height) {
+        return RetrofitInstance.changeBaseURL(Constants.BASE_IMAGE_URL)
+                .create(PictureInterface.class)
+                .getImage(width, height);
     }
 
-    private Date getRandomDate() {
+    @Override
+    public Call<String> getSquareImage(int count) {
+        return RetrofitInstance.changeBaseURL(Constants.BASE_IMAGE_URL)
+                .create(PictureInterface.class)
+                .getSquareImage(count);
+    }
+
+    @Override
+    public Call<String> getJoke() {
+
+        return RetrofitInstance.changeBaseURL(Constants.BASE_JOKE_URL)
+                .create(JokeInterface.class)
+                .getJoke();
+    }
+    //endregion
+
+    //Random genetators
+    Random random = new Random();
+
+    public static Date getRandomDate() {
         int day = new Random().nextInt((31 - 1) + 1) + 1;
         int month = new Random().nextInt((12 - 1) + 1) + 1;
         int year = new Random().nextInt((2019 - 1900) + 1) + 1900;
-
-
 
 
         Date date = new Date(System.currentTimeMillis());
@@ -71,5 +75,10 @@ public class Repository {
         return date;
     }
 
-
+    public User createUserNoImage(String username, String handle) {
+        return new User.Builder()
+                .Usernmae(username)
+                .Handle(handle)
+                .build();
+    }
 }

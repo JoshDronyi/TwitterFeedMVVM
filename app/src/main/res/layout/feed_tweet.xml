@@ -2,8 +2,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="300dp"
-    android:padding="5dp">
+    android:layout_height="wrap_content"
+    android:padding="15dp">
 
     <!--    First Row Start-->
 
@@ -21,10 +21,10 @@
         android:id="@+id/tv_username"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:gravity="center_vertical"
         android:text="@string/username"
         android:textSize="23sp"
         android:textStyle="bold"
-        android:gravity="center_vertical"
         app:layout_constraintBottom_toTopOf="@id/tv_user_handle"
         app:layout_constraintEnd_toStartOf="@id/gl_button_start"
         app:layout_constraintStart_toEndOf="@id/gl_user_image"
@@ -34,9 +34,9 @@
         android:id="@+id/tv_user_handle"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:gravity="center_vertical"
         android:text="@string/handle"
         android:textSize="20sp"
-        android:gravity="center_vertical"
         app:layout_constraintBottom_toTopOf="@id/gl_user_bottom"
         app:layout_constraintEnd_toStartOf="@id/gl_button_start"
         app:layout_constraintStart_toEndOf="@id/gl_user_image"
@@ -64,10 +64,11 @@
     <TextView
         android:id="@+id/tv_message"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:text="@string/message"
-        android:textSize="25sp"
+        android:layout_height="wrap_content"
         android:gravity="center_vertical"
+        android:text="@string/message"
+        android:textSize="24sp"
+        android:padding="8dp"
         app:layout_constraintBottom_toTopOf="@id/gl_message_bottom"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -80,71 +81,70 @@
         android:id="@+id/tv_retweetsLabel"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:text="@string/retweetsLabel"
         android:gravity="center"
+        android:text="@string/retweetsLabel"
         android:textSize="12sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/gl_message_bottom"
+        app:layout_constraintBottom_toTopOf="@id/tv_retweet"
         app:layout_constraintEnd_toStartOf="@id/tv_likesLabel"
-        app:layout_constraintBottom_toTopOf="@id/tv_retweet"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/gl_message_bottom" />
 
     <TextView
         android:id="@+id/tv_likesLabel"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:text="@string/likesLabel"
         android:gravity="center"
+        android:text="@string/likesLabel"
         android:textSize="12sp"
-        app:layout_constraintStart_toEndOf="@id/tv_retweetsLabel"
-        app:layout_constraintTop_toBottomOf="@id/gl_message_bottom"
+        app:layout_constraintBottom_toTopOf="@id/tv_likes"
         app:layout_constraintEnd_toEndOf="@id/gl_retweets_likes_end"
-        app:layout_constraintBottom_toTopOf="@id/tv_likes"/>
+        app:layout_constraintStart_toEndOf="@id/tv_retweetsLabel"
+        app:layout_constraintTop_toBottomOf="@id/gl_message_bottom" />
+
     <TextView
         android:id="@+id/tv_retweet"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:gravity="center"
         android:text="@string/retweets"
         android:textColor="@color/twitterBlue"
-        android:textSize="25sp"
-        android:gravity="center"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_retweetsLabel"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/tv_likes"
-        app:layout_constraintBottom_toBottomOf="@id/gl_retweets_likes_bottom"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_retweetsLabel" />
 
     <TextView
         android:id="@+id/tv_likes"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:gravity="center"
         android:text="@string/likes"
         android:textColor="@color/twitterBlue"
-        android:textSize="25sp"
-        android:gravity="center"
-        app:layout_constraintStart_toEndOf="@id/tv_retweetsLabel"
-        app:layout_constraintTop_toBottomOf="@id/tv_likesLabel"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@id/gl_retweets_likes_end"
-        app:layout_constraintBottom_toBottomOf="@id/gl_retweets_likes_bottom"/>
+        app:layout_constraintStart_toEndOf="@id/tv_retweetsLabel"
+        app:layout_constraintTop_toBottomOf="@id/tv_likesLabel" />
     <!--    Third Row End-->
 
-<!--    Fourth Row Start-->
+    <!--    Fourth Row Start-->
     <TextView
         android:id="@+id/tv_date"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:gravity="center"
         android:text="@string/Date"
         android:textSize="20sp"
-        android:gravity="center"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/gl_retweets_likes_bottom"
-        app:layout_constraintBottom_toTopOf="@id/gl_date_bottom"/>
-<!--    Fourth Row End-->
+        app:layout_constraintStart_toEndOf="@id/gl_retweets_likes_end"
+        app:layout_constraintTop_toBottomOf="@id/gl_message_bottom" />
+    <!--    Fourth Row End-->
 
-<!--    Fifth Row Start-->
+    <!--    Fifth Row Start-->
 
-<!--    Fifth Row End-->
-
-
+    <!--    Fifth Row End-->
 
 
     <!--    Constraint Guidellines -->
@@ -154,14 +154,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="88dp" />
+        app:layout_constraintGuide_begin="75dp" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/gl_message_bottom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="160dp" />
+        app:layout_constraintGuide_begin="196dp" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/gl_user_image"
@@ -175,21 +175,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="224dp" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/gl_date_bottom"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="264dp" />
+        app:layout_constraintGuide_begin="255dp" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/gl_button_bottom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="44dp" />
+        app:layout_constraintGuide_begin="42dp" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/gl_button_start"

@@ -1,19 +1,37 @@
 package com.example.twitterfeedmvvm.viewmodel;
 
-import com.example.twitterfeedmvvm.model.Tweet;
+import android.app.Application;
+
+import androidx.annotation.NonNull;
+import androidx.lifecycle.AndroidViewModel;
+import com.example.twitterfeedmvvm.model.User;
 import com.example.twitterfeedmvvm.repository.Repository;
 
-import java.util.List;
+import java.util.Date;
 
-public class MainViewModel {
+import retrofit2.Call;
 
-    public MainViewModel(){
+public class MainViewModel extends AndroidViewModel {
 
+
+    public MainViewModel(@NonNull Application application) {
+        super(application);
     }
 
-    public List<Tweet> getTweets(){
-        return Repository.getInstance()
-                .getTweets();
+    public User createUserNoImage(String username, String handle) {
+        return  Repository.getInstance()
+                .createUserNoImage(username,handle);
     }
 
+    public Call<String> getUserImage(int width, int height){
+        return Repository.getInstance().getImage(width,height);
+    }
+
+    public Call<String> getMessage(){
+        return Repository.getInstance().getJoke();
+    }
+
+    public Date getRandomDate() {
+        return Repository.getRandomDate();
+    }
 }
